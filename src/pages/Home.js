@@ -1,8 +1,26 @@
 import { Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Button } from 'antd';
+
 const { Header, Content, Footer } = Layout;
 
+
+
 const Home = ()=>{
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 return(
 
   <Layout>
@@ -23,6 +41,16 @@ return(
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
         <h2>TEAM REPORTER APP</h2>
       </div>
+
+      <Button type="primary" onClick={showModal}>
+        +
+      </Button>
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+
     </Content>
     <Footer style={{ textAlign: 'center' }}>Created By Intern-Team </Footer>
   </Layout>
